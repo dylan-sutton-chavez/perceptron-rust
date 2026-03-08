@@ -2,6 +2,21 @@
 
 A binary perceptron implemented in Rust with production tooling: static typing, integrated CI, and reproducible testing.
 
+## Structure
+
+```
+src/
+├── main.rs
+└── model.rs
+tests/
+├── integration-tests.rs
+└── cases.json
+.github/
+└── workflows/
+    └── ci.yml
+Cargo.toml
+```
+
 ## Why Rust
 
 Previous iterations of this model were written in Python. This implementation explores the same algorithm with a systems-level language, gaining:
@@ -19,20 +34,11 @@ $$
 f(x) = sum(w_i * x_i) + b
 $$
 
-## Structure
+## Integration Tests
 
-```
-src/
-├── main.rs
-└── model.rs
-tests/
-├── integration-tests.rs
-└── cases.json
-.github/
-└── workflows/
-    └── ci.yml
-Cargo.toml
-```
+Builds and tests every commit to main, auto-reverting on failure.
+
+*https://github.com/dylan-sutton-chavez/perceptron-rust/actions/workflows/main.yml*
 
 ## Usage
 
