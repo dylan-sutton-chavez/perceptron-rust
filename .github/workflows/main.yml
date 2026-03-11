@@ -1,25 +1,21 @@
-name: CI
+name: integration-tests
 
 on:
-    push:
-        branches: [ main ]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-    ci:
-        runs-on: ubuntu-latest
-        
-        steps:
-            - uses: actions/checkout@v4
-            - uses: dtolnay/rust-toolchain@stable
-
-            - run: cargo build
-            - run: cargo test -- --nocapture
-
-            - if: failure()
-              run: |
-                git config user.email "ci@github.com"
-                git config user.name "CI Bot"
-                git revert HEAD --no-edit
-                git push
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  ci:
+    runs-on: ubuntu-latest
+      
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      
+      - name: Build
+        run: cargo build
+      
+      - name: Run tests
+        run: cargo test
