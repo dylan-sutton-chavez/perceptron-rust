@@ -5,16 +5,16 @@ A binary perceptron implemented in Rust with production tooling: static typing, 
 ## Structure
 
 ```
-src/
-├── main.rs
-└── model.rs
-tests/
-├── integration-tests.rs
-└── cases.json
-.github/
-└── workflows/
-    └── ci.yml
-Cargo.toml
+├──Cargo.toml
+├──src/
+│    ├── main.rs
+│    └── model.rs
+├──tests/
+│    ├── integration-tests.rs
+│    └── cases.json
+└──.github/
+    └── workflows/
+        └── pipeline.yml
 ```
 
 ## Why Rust
@@ -38,7 +38,7 @@ $$
 
 Builds and tests every commit to main, auto-reverting on failure.
 
-*https://github.com/dylan-sutton-chavez/perceptron-rust/actions/workflows/main.yml*
+*https://github.com/dylan-sutton-chavez/perceptron-rust/actions/workflows/pipeline.yml*
 
 ## Usage
 
